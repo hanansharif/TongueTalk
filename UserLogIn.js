@@ -25,7 +25,7 @@ const UserLogIn = () => {
             />
             <View style={Styles.form}>
                 <TextInput
-                    style={Styles.form_input}
+                    style={[Styles.form_input, Styles.shadowProp]}
                     // value={username}
                     placeholder={'Username'}
                     onChangeText={(text) => setUsername(text)}
@@ -33,14 +33,14 @@ const UserLogIn = () => {
                     keyboardType={'email-address'}
                 />
                 <TextInput
-                    style={Styles.form_input}
+                    style={[Styles.form_input, Styles.shadowProp]}
                     // value={password}
                     placeholder={'Password'}
                     secureTextEntry
                     onChangeText={(text) => setPassword(text)}
                 />
                 <TouchableOpacity onPress={handleLoginPress}>
-                    <View style={Styles.button}>
+                    <View style={[Styles.button, Styles.shadowPropBtn]}>
                         <Text style={Styles.button_label}>{'Sign in'}</Text>
                     </View>
                 </TouchableOpacity>
