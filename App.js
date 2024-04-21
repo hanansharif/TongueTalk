@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import UserLogIn from './UserLogIn';
+import Main from './components/Main';
+import MyAdvancedDropDown from './MyAdvancedDropDown';
+import { MenuProvider } from 'react-native-popup-menu';
 
 export default function App() {
   return (
@@ -15,7 +18,12 @@ export default function App() {
     //   <StatusBar style="auto" />
     // </View>
     <>
-      <UserLogIn />
+      <MenuProvider>
+        {/* <UserLogIn /> */}
+        <Main />
+        {/* <MyAdvancedDropDown /> */}
+      </MenuProvider>
+
     </>
   );
 }
