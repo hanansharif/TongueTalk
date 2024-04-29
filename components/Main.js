@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -11,6 +11,10 @@ import Calls from './Calls'; // Import your Calls component
 import ChatSettings from './ChatSettings'; // Import your ChatSettings component
 import AccountSettings from './AccountSettings'; // Import your AccountSettings component
 import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
+import { Platform } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from Expo for the send icon
+const fontFamily = Platform.OS === 'android' ? 'Roboto' : 'Verdana';
+const DashMargin = Platform.OS === 'android' ? 40 : 60;
 
 const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -23,7 +27,7 @@ function Dashboard({ navigation }) {
     return (
         <>
             <View style={styles.container}>
-                <Text style={styles.mainText}>TongueTrek</Text>
+                <Text style={[styles.mainText, { fontFamily }]}>TongueTrek</Text>
 
                 {/* Position the menu slightly below the three dots icon */}
                 <Menu style={[styles.menu, { marginTop: 5 }]}>
@@ -59,6 +63,12 @@ const Main = ({ navigation }) => {
                     component={IndividualChats}
                     options={({ route }) => ({
                         headerTitle: route.params?.title, // Access the title prop
+                        headerStyle: { backgroundColor: 'lightblue' }, // Set header background color
+                        headerRight: () => (
+                            // <Button title="Info" onPress={() => console.log('Info button pressed')} />
+                            <Ionicons name="ellipsis-vertical" size={24} />
+                        ),
+                        // headerLeft: () => <Text style={{ fontSize: 20 }}>My App</Text>,
                     })}
                 />
                 <Stack.Screen name="Settings" component={Settings} />
@@ -72,7 +82,7 @@ const Main = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        paddingTop: 60,
+        paddingTop: DashMargin,
         paddingLeft: 30,
         paddingRight: 10,
         paddingBottom: 5,
@@ -80,7 +90,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', // Center items vertically
     },
     mainText: {
-        fontFamily: 'Verdana',
+        // fontFamily: 'Verdana',
         fontSize: 20,
         fontWeight: 'bold',
         color: '#007BFF',
