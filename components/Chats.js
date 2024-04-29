@@ -2,12 +2,15 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
+
 const chatsData = [
     { id: '1', name: 'John Doe', avatar: require('../assets/avatar.png') }, // Replace with your image path (optional)
     { id: '2', name: 'Jane Smith', avatar: require('../assets/avatar.png') }, // Replace with your image path (optional)
 ];
 
 const ChatListItem = ({ item, navigation }) => {
+    const avatarUri = item.avatar ? item.avatar : require('../assets/avatar.png'); // Default avatar
+
     return (
         <TouchableOpacity style={styles.chatItem} onPress={() => navigation.navigate('IChat', { chatId: item.id, chatName: item.name, title: item.name })} // Pass chatName as title
         >
