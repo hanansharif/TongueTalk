@@ -3,7 +3,13 @@ import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+// import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { Entypo } from '@expo/vector-icons'; // Import Entypo icon
+// import { Ionicons } from 'react-native-vector-icons';
+// import { Ionicons } from '@react-native-vector-icons/ionicons';
+// import MaterialIcons from '@react-native-vector-icons/material-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import Settings from './Settings'; // Import your Settings component
 import IndividualChats from './IndividualChats'; // Import your IndividualChats component
 import Chats from './Chats'; // Import your Chats component
@@ -15,7 +21,7 @@ import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from Expo for the send icon
 const fontFamily = Platform.OS === 'android' ? 'Roboto' : 'Verdana';
 const DashMargin = Platform.OS === 'android' ? 40 : 60;
-
+const MyIcon = require('../assets/3dots.png');
 const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
@@ -32,7 +38,13 @@ function Dashboard({ navigation }) {
                 {/* Position the menu slightly below the three dots icon */}
                 <Menu style={[styles.menu, { marginTop: 5 }]}>
                     <MenuTrigger>
-                        <Entypo name="dots-three-vertical" size={24} color="black" />
+                        {/* <Entypo name="dots-three-vertical" size={24} color="black" /> */}
+                        {/* <Ionicons name="ellipsis-horizontal-outline" size={24} color="black" /> */}
+                        {/* <Icon name="home" size={30} color="blue" />
+                        <FontAwesomeIcon name="ellipsis-h" size={24} color="black" /> */}
+                        {/* <Icon name="comments" size={30} color="#900" /> */}
+                        <Image source={MyIcon} style={{ width: 25, height: 25 }} />
+                        {/* <Text size={24} color="black">Menu</Text> */}
                     </MenuTrigger>
                     <MenuOptions customStyles={menuStyles}>
                         <MenuOption onSelect={() => navigation.navigate('Settings')} text='Settings' />
@@ -66,7 +78,8 @@ const Main = ({ navigation }) => {
                         headerStyle: { backgroundColor: 'lightblue' }, // Set header background color
                         headerRight: () => (
                             // <Button title="Info" onPress={() => console.log('Info button pressed')} />
-                            <Ionicons name="ellipsis-vertical" size={24} />
+                            // <Ionicons name="ellipsis-vertical" size={24} />
+                            <Image source={MyIcon} style={{ width: 25, height: 25 }} />
                         ),
                         // headerLeft: () => <Text style={{ fontSize: 20 }}>My App</Text>,
                     })}

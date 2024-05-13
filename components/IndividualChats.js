@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from Expo for the send icon
 import EmojiSelector, { IconSize } from 'react-native-emoji-selector'; // Import EmojiSelector from react-native-emoji-selector
-
+const SendIcon = require('../assets/send.png');
+const SmileyIcon = require('../assets/smiley.png');
 const MOCK_DATA = [
     { id: 1, user: 'You', message: 'Hi there!' },
     { id: 2, user: 'John Doe', message: 'Hello! How can I help you today?' },
@@ -48,10 +49,16 @@ const IndividualChats = ({ route }) => {
                         placeholder="Type your message..."
                     />
                     <TouchableOpacity style={styles.emojiButton} onPress={() => setIsEmojiPickerVisible(!isEmojiPickerVisible)}>
-                        <Ionicons name="happy-outline" size={24} color="#007bff" />
+                        {/* <Ionicons name="happy-outline" size={24} color="#007bff" /> */}
+                        {/* <Text>Emoji</Text> */}
+                        <Image source={SmileyIcon} style={{ width: 30, height: 30 }} />
                     </TouchableOpacity>
                     {messageText.trim() !== '' && (
-                        <Ionicons name="send" size={24} color="#007bff" onPress={handleSendMessage} />
+                        // <Ionicons name="send" size={24} color="#007bff" onPress={handleSendMessage} />
+                        // <Text onPress={handleSendMessage}>Send</Text>
+                        <TouchableOpacity style={styles.sendButton} onPress={handleSendMessage}>
+                            <Image source={SendIcon} style={{ width: 30, height: 30 }} />
+                        </TouchableOpacity>
                     )}
                 </View>
             </View>
@@ -108,10 +115,13 @@ const styles = StyleSheet.create({
         color: '#ffffff',
     },
     inputContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: 'row', // Keeps elements in a row
+        alignItems: 'center', // Aligns elements vertically
         backgroundColor: '#f0f0f0',
         padding: 10,
+        // Add these properties
+        // flex: 1, // Makes the container take up all available space
+        marginRight: -10, // Adds a small margin on the right side
     },
     textInput: {
         flex: 1,
@@ -129,6 +139,10 @@ const styles = StyleSheet.create({
         right: 35,
         top: 0,
     },
+    sendButton: {
+        marginLeft: -10,
+        right: 10
+    }
 });
 
 export default IndividualChats;

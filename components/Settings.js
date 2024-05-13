@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TouchableNativeFeedback } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TouchableNativeFeedback, Image } from 'react-native';
 import { Entypo } from '@expo/vector-icons'; // Import icon library (optional)
+const NextIcon = require('../assets/next.png');
 
 const Settings = ({ navigation }) => {
     const handlePress = (screenName) => {
@@ -14,19 +15,19 @@ const Settings = ({ navigation }) => {
             {/* Profile Section */}
             <TouchableOpacity style={styles.settingItem} onPress={() => handlePress('Profile')}>
                 <Text style={styles.settingText}>Profile</Text>
-                {iconOptional && <Entypo name="chevron-right" size={24} color="#ccc" style={styles.icon} />}
+                {iconOptional && <Image source={NextIcon} style={{ width: 30, height: 30 }} />}
             </TouchableOpacity>
 
             {/* Chat Settings Section */}
             <TouchableOpacity style={styles.settingItem} onPress={() => handlePress('Chats')}>
                 <Text style={styles.settingText}>Chat Settings</Text>
-                {iconOptional && <Entypo name="chevron-right" size={24} color="#ccc" style={styles.icon} />}
+                {iconOptional && <Image source={NextIcon} style={{ width: 30, height: 30 }} />}
             </TouchableOpacity>
 
             {/* Account Settings Section */}
             <TouchableOpacity style={styles.settingItem} onPress={() => handlePress('Account')}>
                 <Text style={styles.settingText}>Account Settings</Text>
-                {iconOptional && <Entypo name="chevron-right" size={24} color="#ccc" style={styles.icon} />}
+                {iconOptional && <Image source={NextIcon} style={{ width: 30, height: 30 }} />}
             </TouchableOpacity>
         </View>
     );
